@@ -1,21 +1,12 @@
 # AKS
 
+Example project using Terraform, AKS, Helm, and AKS-managed Azure AD (using a service principal for auth).
+
+Copy `example.tfvars` to `values.tfvars` and fill in the values for a service principal.
+
 ```
 $ terraform init
-$ terraform apply -auto-approve
+$ terraform apply -auto-approve -var-file=values.tfvars
 ```
 
-Output
-
-```
-azurerm_kubernetes_cluster.example: Creation complete after 4m51s [id=/subscriptions/<subscription-id>/resourceGroups/example-aks-resources/providers/Microsoft.ContainerService/managedClusters/example-aks1]
-helm_release.nginx_ingress: Creating...
-╷
-│ Error: Kubernetes cluster unreachable: the server has asked for the client to provide credentials
-│
-│   with helm_release.nginx_ingress,
-│   on aks.tf line 43, in resource "helm_release" "nginx_ingress":
-│   43: resource "helm_release" "nginx_ingress" {
-│
-╵
-```
+The service principal may need some additional role assignments.

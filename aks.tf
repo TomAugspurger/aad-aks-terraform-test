@@ -1,3 +1,14 @@
+variable "azure_client_id" {
+  type = string
+}
+variable "azure_client_secret" {
+  type = string
+}
+variable "azure_tenant_id" {
+  type = string
+}
+
+
 resource "azurerm_resource_group" "example" {
   name     = "example-aks-resources"
   location = "West Europe"
